@@ -1,11 +1,17 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const MONGO_URI = process.env.MONGODB_URI;
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb://localhost:27017/grain-app', {     
+    await mongoose.connect(MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
-
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log('✅ MongoDB connected successfully');
   } catch (error) {
     console.error(`Error: ${error.message}`);
     process.exit(1);
