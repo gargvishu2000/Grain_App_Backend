@@ -17,18 +17,20 @@ connectCloudinary();
 
 const allowedOrigins = ['https://grain-app-frontend.vercel.app'];
 
-app.use(express.json());
 app.use(cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true
-  }));
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl or Postman)
+    if (!origin) return callback(null, true);
 
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      console.log('CORS blocked for origin:', origin);
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 app.use('/api/grains', grainRouter);
 app.use('/api/users', userRouter);
 app.use('/api/order', orderRouter);
