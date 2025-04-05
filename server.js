@@ -15,7 +15,7 @@ const app =express();
 connectDB();
 connectCloudinary();
 
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = ['https://grain-app-frontend.vercel.app'];
 
 app.use(express.json());
 app.use(cors({
