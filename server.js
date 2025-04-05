@@ -6,6 +6,9 @@ import connectCloudinary from "./config/cloudinary.js";
 import orderRouter from "./routes/order.route.js";
 import cartrouter from "./routes/cart.route.js";
 import grainRouter from './routes/grain.route.js'
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app =express();
 
@@ -34,7 +37,8 @@ app.use('/api/cart', cartrouter);
 app.get('/', (req,res)=> {
     console.log("Backend working fine");
 })
+const PORT = process.env.PORT || 5002;
 
-app.listen(3000, ()=>{
-    console.log("app is serving on port 3000");
+app.listen(PORT, ()=>{
+    console.log(`app is serving on port ${PORT}` );
 })
