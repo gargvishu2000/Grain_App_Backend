@@ -37,7 +37,7 @@ app.use('/api/cart', cartrouter);
 app.get('/', (req,res)=> {
     console.log("Backend working fine");
 })
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, ()=>{
     console.log(`app is serving on port ${PORT}` );
