@@ -14,6 +14,8 @@ const app =express();
 
 connectDB();
 connectCloudinary();
+app.use(express.json());
+
 
 const allowedOrigins = ['https://grain-app-frontend.vercel.app','https://grain-app-admin.vercel.app'];
 
