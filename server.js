@@ -17,7 +17,9 @@ connectCloudinary();
 app.use(express.json());
 
 
-const allowedOrigins = ['https://grain-app-frontend.vercel.app','https://grain-app-admin.vercel.app'];
+const allowedOrigins = ['https://grain-app-frontend.vercel.app','https://grain-app-admin.vercel.app'
+  , 'https://www.realgraintrader.com'
+];
 
 app.use(cors({
   origin: function (origin, callback) {
